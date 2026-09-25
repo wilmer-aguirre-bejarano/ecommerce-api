@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm:latest
 
 COPY . .
 
-# Configuración de la imagen para Laravel - CAMBIADO A 0 PARA INSTALAR DEPENDENCIAS
+# Configuración de la imagen para Laravel
 ENV SKIP_COMPOSER 0
 ENV WEBROOT /var/www/html/public
 ENV PHP_ERRORS_STDERR 1
@@ -17,5 +17,5 @@ ENV LOG_CHANNEL stderr
 # Permitir a Composer ejecutarse como root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-# Comando final con migraciones automáticas incluidas
-CMD php artisan migrate --force && /start.sh
+# Regresamos al inicio normal para que no se caiga
+CMD ["/start.sh"]
