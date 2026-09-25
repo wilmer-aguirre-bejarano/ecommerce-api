@@ -17,4 +17,5 @@ ENV LOG_CHANNEL stderr
 # Permitir a Composer ejecutarse como root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-CMD ["/start.sh"]
+# CMD ["/start.sh"]
+CMD php artisan migrate --force && /start.sh
