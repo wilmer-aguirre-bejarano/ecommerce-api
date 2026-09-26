@@ -3,11 +3,11 @@ set -e
 
 echo "🚀 Iniciando despliegue de ecommerce-api..."
 
-# Ejecuta migraciones (el flag --force evita la confirmación interactiva)
+# Ejecuta migraciones
 echo "🗄️  Ejecutando migraciones..."
 php artisan migrate --force
 
-# Ejecuta los seeders para crear los usuarios y datos iniciales
+# Ejecuta los seeders
 echo "🌱 Ejecutando seeders..."
 php artisan db:seed --force
 
@@ -17,6 +17,5 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Inicia el servidor principal de la imagen
-echo "✅ Servidor iniciado en el puerto 80"
+echo "✅ Servidor iniciado"
 exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
